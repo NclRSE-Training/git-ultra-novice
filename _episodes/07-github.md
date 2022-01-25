@@ -22,11 +22,14 @@ Systems like Git allow us to move work between any two repositories.  In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop.  Most programmers use hosting
 services like [GitHub](https://github.com), [Bitbucket](https://bitbucket.org) or
-[GitLab](https://gitlab.com/) to hold those master copies; we'll explore the pros
-and cons of this in the final section of this lesson.
+[GitLab](https://gitlab.com/) to hold those main copies; we'll explore the pros
+and cons of this in a later episode.
 
 Let's start by sharing the changes we've made to our current project with the
-world.  Log in to GitHub, then click on the icon in the top right corner to
+world. To this end we are going to create a *remote* repository that will be linked to our *local* repository.
+
+## 1. Create a remote repository
+Log in to [GitHub](https://github.com), then click on the icon in the top right corner to
 create a new repository called `recipes`:
 
 ![Creating a Repository on GitHub (Step 1)](../fig/github-create-repo-01.png)
@@ -67,24 +70,22 @@ Now that we have two repositories, we need a diagram like this:
 Note that our local repository still contains our earlier work on `guacamole.md`, but the
 remote repository on GitHub appears empty as it doesn't contain any files yet.
 
-The next step is to connect the two repositories.  We do this by making the
+## 2. Connect local to remote repository
+Now we connect the two repositories.  We do this by making the
 GitHub repository a [remote]({{ page.root}}{% link reference.md %}#remote) for the local repository.
-The home page of the repository on GitHub includes the string we need to
+The home page of the repository on GitHub includes the URL string we need to
 identify it:
 
 ![Where to Find Repository URL on GitHub](../fig/github-find-repo-string.png)
 
-Click on the 'HTTPS' link to change the [protocol]({{ page.root }}{% link reference.md %}#protocol) from SSH to HTTPS.
+Click on the 'SSH' link to change the [protocol]({{ page.root }}{% link reference.md %}#protocol) from HTTPS to SSH.
 
 > ## HTTPS vs. SSH
 >
-> We use HTTPS here because it does not require additional configuration.  After
-> the workshop you may want to set up SSH access, which is a bit more secure, by
-> following one of the great tutorials from
-> [GitHub](https://help.github.com/articles/generating-ssh-keys),
-> [Atlassian/Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html)
-> and [GitLab](https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/)
-> (this one has a screencast).
+> We use SSH here because, while it requires some additional configuration, it is a 
+> security protocol widely used by many applications.  The steps below describe SSH at a 
+> minimum level for GitHub. A supplemental episode to this lesson discusses advanced setup 
+> and concepts of SSH and key pairs, and other material supplemental to git related SSH. 
 {: .callout}
 
 ![Changing the Repository URL on GitHub](../fig/github-change-repo-string.png)
@@ -288,13 +289,16 @@ Good! This output confirms that the SSH key works as intended. We are now ready 
 
 ## 4. Push local changes to a remote
 
-Once the remote is set up, this command will push the changes from
+Now that authentication is setup, we can return to the remote.  This command will push the changes from
 our local repository to the repository on GitHub:
 
 ~~~
-$ git push origin master
+$ git push origin main
 ~~~
 {: .language-bash}
+
+Since Alfred set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it 
+will not prompt for a passphrase. 
 
 ~~~
 Enumerating objects: 16, done.
@@ -305,7 +309,7 @@ Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
 To https://github.com/alflin/recipes.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 ~~~
 {: .output}
 
@@ -364,19 +368,19 @@ Our local and remote repositories are now in this state:
 > option is synonymous with the `--set-upstream-to` option for the `git branch`
 > command, and is used to associate the current branch with a remote branch so
 > that the `git pull` command can be used without any arguments. To do this,
-> simply use `git push -u origin master` once the remote has been set up.
+> simply use `git push -u origin main` once the remote has been set up.
 {: .callout}
 
 We can pull changes from the remote repository to the local one as well:
 
 ~~~
-$ git pull origin master
+$ git pull origin main
 ~~~
 {: .language-bash}
 
 ~~~
 From https://github.com/alflin/recipes
- * branch            master     -> FETCH_HEAD
+ * branch            main     -> FETCH_HEAD
 Already up-to-date.
 ~~~
 {: .output}
@@ -460,7 +464,7 @@ GitHub, though, this command would download them to our local repository.
 > > repository to your local repository, Git detects that they have histories that do not share a 
 > > common origin and refuses to merge.
 > > ~~~
-> > $ git pull origin master
+> > $ git pull origin main
 > > ~~~
 > > {: .language-bash}
 > >
@@ -471,8 +475,8 @@ GitHub, though, this command would download them to our local repository.
 > > remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
 > > From https://github.com/alflin/recipes
-> >  * branch            master     -> FETCH_HEAD
-> >  * [new branch]      master     -> origin/master
+> >  * branch            main     -> FETCH_HEAD
+> >  * [new branch]      main     -> origin/main
 > > fatal: refusing to merge unrelated histories
 > > ~~~
 > > {: .output}
@@ -481,13 +485,13 @@ GitHub, though, this command would download them to our local repository.
 > > Be careful when you use this option and carefully examine the contents of local and remote 
 > > repositories before merging.
 > > ~~~
-> > $ git pull --allow-unrelated-histories origin master
+> > $ git pull --allow-unrelated-histories origin main
 > > ~~~
 > > {: .language-bash}
 > >
 > > ~~~
 > > From https://github.com/alflin/recipes
-> >  * branch            master     -> FETCH_HEAD
+> >  * branch            main     -> FETCH_HEAD
 > > Merge made by the 'recursive' strategy.
 > > README.md | 1 +
 > > 1 file changed, 1 insertion(+)
