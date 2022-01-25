@@ -297,7 +297,7 @@ $ git push origin main
 ~~~
 {: .language-bash}
 
-Since Alfred set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it 
+Since Alfredo set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it 
 will not prompt for a passphrase. 
 
 ~~~
