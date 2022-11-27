@@ -41,19 +41,17 @@ $ git branch
 
 The '*' indicates which branch we are currently on.
 
-In this lesson, Alfredo is trying to run an analysis
-and doesn't know if it will be faster in bash or python.
-To keep his main branch safe he will use separate branches
-for both bash and python analysis.
-Then he will merge the branch with the faster script
-into his main branch.
+In this lesson, Alfredo wants to create two new categories of recipes, one 
+for starters and one for desserts. However, he does not want to work on 
+the main branch because it is stable and he wants to keep it safe
 
-First let's make the python branch.
+
+First let's make the starter branch.
 We use the same `git branch` command but now add the 
 name we want to give our new branch
 
 ~~~
-$ git branch pythondev
+$ git branch starters
 ~~~
 {: .bash}
 
@@ -66,11 +64,11 @@ $ git branch
 
 ~~~
 * main
-  pythondev
+  starters
 ~~~
 {: .output}
 
-We can see that we created the `pythondev` branch but we
+We can see that we created the `starters` branch but we
 are still in the main branch.
 
 We can also see this in the output of the `git status` command.
@@ -90,14 +88,14 @@ To switch to our new branch we can use the `checkout` command
 we learned earlier and check our work with `git branch`.
 
 ~~~
-$ git checkout pythondev
+$ git checkout starters
 $ git branch
 ~~~
 {: .bash}
 
 ~~~
   main
-* pythondev
+* starters
 ~~~
 {: .output}
 
@@ -116,27 +114,27 @@ Here you can use `git log` and `ls` to see that the history and
 files are the same as our `main` branch. This will be true until
 some changes are committed to our new branch.
 
-Now lets make our python script.  
-For simplicity sake, we will `touch` the script making an empty file
-but imagine we spent hours working on this python script for our analysis.
+Now lets create a starter recipe called ClassicBruschetta.md.  
+For simplicity sake, we will `touch ClassicBruschetta.md` to create an empty file
+but imagine we spent hours working on this recipe.
 
 ~~~
-$ touch analysis.py
+$ touch ClassicBruschetta.py
 ~~~
 {: .bash}
 
-Now we can add and commit the script to our branch.
+Now we can add and commit the file to our branch.
 
 ~~~
 $ git add analysis.py
-$ git commit -m "Wrote and tested python analysis script"
+$ git commit -m "Wrote classic bruschetta recipe"
 ~~~
 {: .bash}
 
 ~~~
-[pythondev x792csa1] Wrote and tested python analysis script
+[starters x792csa1] Wrote classic bruschetta recipe
  1 file changed, 1 insertion(+)
- create mode 100644 analysis.py
+ create mode 100644 ClassicBruschetta.py
 ~~~
 {: .output}
 
@@ -160,7 +158,7 @@ $ git branch
 
 ~~~
 * main
-  pythondev
+  starters
 ~~~
 {: .output}
 
@@ -175,20 +173,20 @@ $ git log --oneline
 ~~~
 {: .bash}
 
-We no longer see the file `analysis.py` and our latest commit doesn't
+We no longer see the file `ClassicBruschetta.md` and our latest commit doesn't
 appear in this branch's history. But do not fear! All of our hard work
-remains in the `pythondev` branch. We can confirm this by moving back
+remains in the `starters` branch. We can confirm this by moving back
 to that branch.
 
 ~~~
-$ git checkout pythondev
+$ git checkout starters
 $ git branch
 ~~~
 {: .bash}
 
 ~~~
   main
-* pythondev
+* starters
 ~~~
 {: .output}
 
@@ -198,11 +196,11 @@ $ git log --oneline
 ~~~
 {: .bash}
 
-And we see that our `analysis.py` file and respective commit have been
-preserved in the `pythondev` branch.
+And we see that our `ClassicBruschetta.md` file and respective commit have been
+preserved in the `starters` branch.
 
 Now we can repeat the process for our bash script in a branch called
-`bashdev`.
+`desserts`.
 
 First we must checkout the `main` branch again. New branches will
 include the entire history up to the current commit, and we'd like
@@ -216,25 +214,25 @@ $ git branch
 
 ~~~
 * main
-  pythondev
+  starters
 ~~~
 {: .output}
 
-This time let's create and switch two the `bashdev` branch
+This time let's create and switch two the `desserts` branch
 in one command.
 
 We can do so by adding the `-b` flag to checkout.
 
 ~~~
-$ git checkout -b bashdev
+$ git checkout -b desserts
 $ git branch
 ~~~
 {: .bash}
 
 ~~~
-* bashdev
+* desserts
   main
-  pythonndev
+  starters
 ~~~
 {: .output}
 
@@ -242,21 +240,21 @@ $ git branch
 We can use `ls` and `git log` to see that this branch is 
 the same as our current `main` branch.
 
-Now we can make `analysis.sh` and add and commit it.
+Now we can make `ClassicTiramisu.md` and add and commit it.
 Again imagine instead of `touch`ing the file we worked 
 on it for many hours.
 
 ~~~
-$ touch analysis.sh
-$ git add analysis.sh
-$ git commit –m “Wrote and tested bash analysis script”
+$ touch ClassicTiramisu.md
+$ git add ClassicTiramisu.md
+$ git commit –m “Wrote recipe for classic tiramisu”
 ~~~
 {: .bash}
 
 ~~~
-[bashdev 2n779ds] Wrote and tested bash analysis script
+[bashdev 2n779ds] Wrote recipe for classic tiramisu
  1 file changed, 1 insertion(+)
- create mode 100644 analysis.sh
+ create mode 100644 ClassicTiramisu.md
 ~~~
 {: .output}
 
@@ -267,7 +265,8 @@ $ git log --oneline
 ~~~
 {: .bash}
 
-So it turns out the python `analysis.py` is much faster than `analysis.sh`.
+Alfredo decides his classic bruschetta recipe needs more work before it is ready. But,
+he is happy with the classic tiramisu recipe.
 
 Let's merge this version into our `main` branch so we can use it for
 our work going forward.
@@ -284,32 +283,32 @@ $ git branch
 {: .bash}
 
 ~~~
-  bashdev
+  desserts
 * main
-  pythonndev
+  starters
 ~~~
 {: .output}
 
-Now we can `merge` the `pythondev` branch into our current branch
+Now we can `merge` the `desserts` branch into our current branch
 (`main`). In english, this command could be stated as "`git`, please
-`merge` the changes in the `pythondev` branch into the current branch
+`merge` the changes in the `desserts` branch into the current branch
 I'm in".
 
 ~~~
-$ git merge pythondev
+$ git merge desserts
 ~~~
 {: .bash}
 
 ~~~
 Updating 12687f6..x792csa1
 Fast-forward
- analysis.py | 0
+ ClassicTiramisu.md | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 analysis.py
+ create mode 100644 ClassicTiramisu.md
 ~~~
 {: .output}
 
-Now that we've merged the `pythondev` into `main`, these changes
+Now that we've merged the `desserts` into `main`, these changes
 exist in both branches. This could be confusing in the future if we
 stumble upon the `pythondev` branch again.
 
@@ -317,39 +316,40 @@ We can delete our old branches so as to avoid this confusion later.
 We can do so by adding the `-d` flag to the `git branch` command.
 
 ~~~
-git branch -d pythondev
+git branch -d desserts
 ~~~
 {: .bash}
 
 ~~~
-Deleted branch pythondev (was x792csa1).
+Deleted branch desserts (was x792csa1).
 ~~~
 {: .output}
 
-And because we don't want to keep the changes in the `bashdev` branch,
-we can delete the `bashdev` branch as well
+Alfredo decides he doesn't want to keep the starters branch either.  So 
+he wants delete it.
+
 ~~~
 $ git branch -d bashdev
 ~~~
 {: .bash}
 
 ~~~
-error: The branch 'bashdev' is not fully merged.
-If you are sure you want to delete it, run 'git branch -D bashdev'.
+error: The branch 'starters' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D starters'.
 ~~~
 {: .output}
 
-Since we've never merged the changes from the `bashdev` branch,
+Since we've never merged the changes from the `starters` branch,
 git warns us about deleting them and tells us to use the `-D` flag instead.
 
 Since we really want to delete this branch we will go ahead and do so.
 
 ~~~
-git branch -D bashdev
+git branch -D starters
 ~~~
 {: .bash}
 
 ~~~
-Deleted branch bashdev (was 2n779ds).
+Deleted branch starters (was 2n779ds).
 ~~~
 {: .output}
