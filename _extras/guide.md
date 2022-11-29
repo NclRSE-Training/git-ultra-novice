@@ -180,7 +180,7 @@ particular set of files in `.gitignore`.
     `git push -u origin master`, will have slightly different output, including
     the line `Branch master set up to track remote branch master from origin by rebasing.`
 
-## [Collaborating]({{ page.root }}{% link _episodes/collab.md %})
+## Collaborating
 
 *   Decide in advance whether all the learners will work in one shared
     repository, or whether they will work in pairs (or other small groups) in
