@@ -1,7 +1,7 @@
 ---
 title: Tracking Changes
 teaching: 20
-exercises: 0
+exercises: 20
 questions:
 - "How do I record changes in Git?"
 - "How do I check the status of my version control repository?"
