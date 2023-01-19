@@ -29,8 +29,9 @@ Let's start by sharing the changes we've made to our current project with the
 world. To this end we are going to create a *remote* repository that will be linked to our *local* repository.
 
 ## 1. Create a remote repository
-Log in to [GitHub](https://github.com), then click on the icon in the top right corner to
-create a new repository called `recipes`:
+Log in to [GitHub](https://github.com), then click on the "plus" icon in the top right corner to
+create a new repository called `recipes`. Your browser view of GitHub might differ from this slightly
+but the icon should be the same.
 
 ![Creating a Repository on GitHub (Step 1)](../fig/github-create-repo-01.png)
 
@@ -58,7 +59,7 @@ $ git init
 {: .language-bash}
 
 If you remember back to the earlier [lesson](../04-changes/) where we added and
-committed our earlier work on `guacamole.md`, we had a diagram of the local repository
+committed our earlier work on `peasoup.md`, we had a diagram of the local repository
 which looked like this:
 
 ![The Local Repository with Git Staging Area](../fig/git-staging-area.svg)
@@ -67,7 +68,7 @@ Now that we have two repositories, we need a diagram like this:
 
 ![Freshly-Made GitHub Repository](../fig/git-freshly-made-github-repo.svg)
 
-Note that our local repository still contains our earlier work on `guacamole.md`, but the
+Note that our local repository still contains our earlier work on `peasoup.md`, but the
 remote repository on GitHub appears empty as it doesn't contain any files yet.
 
 ## 2. Connect local to remote repository
@@ -82,10 +83,13 @@ Click on the 'SSH' link to change the [protocol]({{ page.root }}{% link referenc
 
 > ## HTTPS vs. SSH
 >
-> We use SSH here because, while it requires some additional configuration, it is a 
-> security protocol widely used by many applications.  The steps below describe SSH at a 
-> minimum level for GitHub. A supplemental episode to this lesson discusses advanced setup 
-> and concepts of SSH and key pairs, and other material supplemental to git related SSH. 
+> We use SSH because, while it requires some additional configuration, it is a 
+> security protocol widely used by many applications. GitHub does not permit HTTPS access
+> to repositories using your account login and password in any event, instead requiring the
+> creation of a personal access token (PAT) which also needs additional configuration.
+> The steps below describe SSH at a minimum level for GitHub. A supplemental episode
+> to this lesson discusses advanced setup and concepts of SSH and key pairs, and other
+> material supplemental to Git-related SSH. 
 {: .callout}
 
 ![Changing the Repository URL on GitHub](../fig/github-change-repo-string.png)
@@ -418,7 +422,7 @@ GitHub, though, this command would download them to our local repository.
 
 > ## Uploading files directly in GitHub browser
 >
-> Github also allows you to skip the command line and upload files directly to 
+> GitHub also allows you to skip the command line and upload files directly to 
 > your repository without having to leave the browser. There are two options. 
 > First you can click the "Upload files" button in the toolbar at the top of the
 > file tree. Or, you can drag and drop files from your desktop onto the file 

@@ -243,12 +243,12 @@ working in teams or not, because it is
 *   Learners may have slightly different output from `git push` and `git pull`
     depending on the version of git, and if upstream (`-u`) is used.
 
-## [Ignoring Things]({{ page.root }}{% link _episodes/07-ignore.md %})
+## [Ignoring Things]({{ page.root }}{% link _episodes/06-ignore.md %})
 
 Just remember that you can use wildcards and regular expressions to ignore a
 particular set of files in `.gitignore`.
 
-## [Conflicts]({{ page.root }}{% link _episodes/09-conflict.md %})
+## [Conflicts]({{ page.root }}{% link _episodes/08-conflict.md %})
 
 *   Expect the learners to make mistakes. Expect *yourself* to make mistakes.
     This happens because it is late in the lesson and everyone is tired.

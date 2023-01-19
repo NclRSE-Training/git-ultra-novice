@@ -288,7 +288,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add basic peasoup's ingredients"
+$ git commit -m "Add basic ingredients for pea soup"
 $ git status
 ~~~
 {: .language-bash}
@@ -311,12 +311,12 @@ Let's fix that:
 
 ~~~
 $ git add peasoup.md
-$ git commit -m "Add basic peasoup's ingredients"
+$ git commit -m "Add basic ingredients for pea soup"
 ~~~
 {: .language-bash}
 
 ~~~
-[master 34961b1] Add basic peasoup's ingredient
+[master 34961b1] Add basic ingredients for pea soup
  1 file changed, 3 insertions(+)
 ~~~
 {: .output}
@@ -446,12 +446,12 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Modify peasoup to the traditional recipe"
+$ git commit -m "Modify peasoup to use different onions"
 ~~~
 {: .language-bash}
 
 ~~~
-[master 005937f] Modify peasoup to the traditional recipe
+[master 005937f] Modify peasoup to use different onions
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -481,13 +481,13 @@ commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
 Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
-    Modify peasoup to the traditional recipe
+    Modify peasoup to use different onions
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
 Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
-    Add basic peasoup's ingredients
+    Add basic ingredients for pea soup
 
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Alfredo Linguini <a.linguini@ratatouille.fr>
@@ -537,7 +537,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 > Date:   Thu Aug 22 10:14:07 2013 -0400
 >
->    Modify peasoup to the traditional recipe
+>    Modify peasoup to use different onions
 > ~~~
 > {: .output}
 >
@@ -549,8 +549,8 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> 005937f Modify peasoup to the traditional recipe
-> 34961b1 Add basic peasoup's ingredients
+> 005937f Modify peasoup to use different onions
+> 34961b1 Add basic ingredients for pea soup
 > f22b25e Create a template for recipe
 > ~~~
 > {: .output}
@@ -566,8 +566,8 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> * 005937f Modify peasoup to the traditional recipe  (HEAD, master)
-> * 34961b1 Add basic peasoup's ingredients
+> * 005937f Modify peasoup to use different onions  (HEAD, master)
+> * 34961b1 Add basic ingredients for pea soup
 > * f22b25e Create a template for recipe
 > ~~~
 > {: .output}
@@ -635,8 +635,8 @@ repository (`git commit`):
 > last commit made to `peasoup.md`?
 >
 > 1. "Changes"
-> 2. "Changed onions for spring onions"
-> 3. "peasoup modified to the traditional recipe"
+> 2. "Change onions to spring onions"
+> 3. "Modify peasoup to use different onions"
 >
 > > ## Solution
 > > Answer 1 is not descriptive enough, and the purpose of the commit is unclear;
