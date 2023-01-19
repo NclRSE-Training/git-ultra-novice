@@ -26,18 +26,16 @@ $ cd ~/Desktop/recipes
 ~~~
 {: .language-bash}
 
-Let's create a file called `guacamole.md` that contains the basic structure to
-have a recipe.
-We'll use `nano` to edit the file;
-you can use whatever editor you like.
+Let's create a file called `peasoup.md` that contains the basic structure of a recipe.
+We'll use `nano` to edit the file, but you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
 
 ~~~
-$ nano guacamole.md
+$ nano peasoup.md
 ~~~
 {: .language-bash}
 
-Type the text below into the `guacamole.md` file:
+Type the text below into the `peasoup.md` file:
 
 ~~~
 # Ingredients
@@ -53,15 +51,15 @@ $ ls
 {: .language-bash}
 
 ~~~
-guacamole.md
+peasoup.md
 ~~~
 {: .output}
 
 
-`guacamole.md` contains a single line, which we can see by running:
+`peasoup.md` contains a single line, which we can see by running:
 
 ~~~
-$ cat guacamole.md
+$ cat peasoup.md
 ~~~
 {: .language-bash}
 
@@ -87,7 +85,7 @@ Initial commit
 Untracked files:
    (use "git add <file>..." to include in what will be committed)
 
-	guacamole.md
+	peasoup.md
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 {: .output}
@@ -97,7 +95,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ~~~
-$ git add guacamole.md
+$ git add peasoup.md
 ~~~
 {: .language-bash}
 
@@ -116,12 +114,12 @@ Initial commit
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   guacamole.md
+	new file:   peasoup.md
 
 ~~~
 {: .output}
 
-Git now knows that it's supposed to keep track of `guacamole.md`,
+Git now knows that it's supposed to keep track of `peasoup.md`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
@@ -134,15 +132,14 @@ $ git commit -m "Create a template for recipe"
 ~~~
 [master (root-commit) f22b25e] Create a template for recipe
  1 file changed, 1 insertion(+)
- create mode 100644 guacamole.md
+ create mode 100644 peasoup.md
 ~~~
 {: .output}
 
-When we run `git commit`,
-Git takes everything we have told it to save by using `git add`
+When we run `git commit`, Git takes everything we have told it to save in using the `git add` command,
 and stores a copy permanently inside the special `.git` directory.
 This permanent copy is called a [commit]({{ page.root }}{% link reference.md %}#commit)
-(or [revision]({{ page.root }}{% link reference.md %}#revision)) and its short identifier is `f22b25e`. Your commit may have another identifier.
+(or [revision]({{ page.root }}{% link reference.md %}#revision)) and its short identifier is `f22b25e`. Your commit is likely to have a different identifier.
 
 We use the `-m` flag (for "message")
 to record a short, descriptive, and specific comment that will help us remember later on what we did and why.
@@ -196,7 +193,7 @@ and the log message Git was given when the commit was created.
 
 > ## Where Are My Changes?
 >
-> If we run `ls` at this point, we will still see just one file called `guacamole.md`.
+> If we run `ls` at this point, we will still see just one file called `peasoup.md`.
 > That's because Git saves information about files' history
 > in the special `.git` directory mentioned earlier
 > so that our filesystem doesn't become cluttered
@@ -208,16 +205,16 @@ Now suppose Alfredo adds more information to the file.
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ nano guacamole.md
-$ cat guacamole.md
+$ nano peasoup.md
+$ cat peasoup.md
 ~~~
 {: .language-bash}
 
 ~~~
 # Ingredients
-- avocado
-- lemon
-- salt
+- peas
+- onions
+- potato
 # Instructions
 ~~~
 {: .output}
@@ -236,7 +233,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   guacamole.md
+	modified:   peasoup.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -259,15 +256,15 @@ $ git diff
 {: .language-bash}
 
 ~~~
-diff --git a/guacamole.md b/guacamole.md
+diff --git a/peasoup.md b/peasoup.md
 index df0654a..315bf3a 100644
---- a/guacamole.md
-+++ b/guacamole.md
+--- a/peasoup.md
++++ b/peasoup.md
 @@ -1,2 +1,5 @@
  # Ingredients
-+- avocado
-+- lemon
-+- salt
++- peas
++- onions
++- potato
  # Instructions
 ~~~
 {: .output}
@@ -291,7 +288,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add basic guacamole's ingredients"
+$ git commit -m "Add basic peasoup's ingredients"
 $ git status
 ~~~
 {: .language-bash}
@@ -302,7 +299,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   guacamole.md
+	modified:   peasoup.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -313,13 +310,13 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ~~~
-$ git add guacamole.md
-$ git commit -m "Add basic guacamole's ingredients"
+$ git add peasoup.md
+$ git commit -m "Add basic peasoup's ingredients"
 ~~~
 {: .language-bash}
 
 ~~~
-[master 34961b1] Add basic guacamole's ingredient
+[master 34961b1] Add basic peasoup's ingredient
  1 file changed, 3 insertions(+)
 ~~~
 {: .output}
@@ -370,16 +367,16 @@ First,
 we'll add another line to the file:
 
 ~~~
-$ nano guacamole.md
-$ cat guacamole.md
+$ nano peasoup.md
+$ cat peasoup.md
 ~~~
 {: .language-bash}
 
 ~~~
 # Ingredients
-- avocado
-- lime
-- salt
+- peas
+- spring onions
+- potato
 # Instructions
 ~~~
 {: .output}
@@ -390,16 +387,16 @@ $ git diff
 {: .language-bash}
 
 ~~~
-diff --git a/guacamole.md b/guacamole.md
+diff --git a/peasoup.md b/peasoup.md
 index 315bf3a..b36abfd 100644
---- a/guacamole.md
-+++ b/guacamole.md
+--- a/peasoup.md
++++ b/peasoup.md
 @@ -1,5 +1,5 @@
  # Ingredients
- - avocado
--- lemon
-+- lime
- - salt
+ - peas
+-- onions
++- spring onions
+ - potato
  # Instructions
 ~~~
 {: .output}
@@ -411,7 +408,7 @@ Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ~~~
-$ git add guacamole.md
+$ git add peasoup.md
 $ git diff
 ~~~
 {: .language-bash}
@@ -429,16 +426,16 @@ $ git diff --staged
 {: .language-bash}
 
 ~~~
-diff --git a/guacamole.md b/guacamole.md
+diff --git a/peasoup.md b/peasoup.md
 index 315bf3a..b36abfd 100644
---- a/guacamole.md
-+++ b/guacamole.md
+--- a/peasoup.md
++++ b/peasoup.md
 @@ -1,5 +1,5 @@
  # Ingredients
- - avocado
--- lemon
-+- lime
- - salt
+ - peas
+-- onions
++- spring onions
+ - potato
  # Instructions
 ~~~
 {: .output}
@@ -449,12 +446,12 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Modify guacamole to the traditional recipe"
+$ git commit -m "Modify peasoup to the traditional recipe"
 ~~~
 {: .language-bash}
 
 ~~~
-[master 005937f] Modify guacamole to the traditional recipe
+[master 005937f] Modify peasoup to the traditional recipe
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -484,13 +481,13 @@ commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
 Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
-    Modify guacamole to the traditional recipe
+    Modify peasoup to the traditional recipe
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
 Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
-    Add basic guacamole's ingredients
+    Add basic peasoup's ingredients
 
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Alfredo Linguini <a.linguini@ratatouille.fr>
@@ -540,7 +537,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 > Date:   Thu Aug 22 10:14:07 2013 -0400
 >
->    Modify guacamole to the traditional recipe
+>    Modify peasoup to the traditional recipe
 > ~~~
 > {: .output}
 >
@@ -552,8 +549,8 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> 005937f Modify guacamole to the traditional recipe
-> 34961b1 Add basic guacamole's ingredients
+> 005937f Modify peasoup to the traditional recipe
+> 34961b1 Add basic peasoup's ingredients
 > f22b25e Create a template for recipe
 > ~~~
 > {: .output}
@@ -569,8 +566,8 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> * 005937f Modify guacamole to the traditional recipe  (HEAD, master)
-> * 34961b1 Add basic guacamole's ingredients
+> * 005937f Modify peasoup to the traditional recipe  (HEAD, master)
+> * 34961b1 Add basic peasoup's ingredients
 > * f22b25e Create a template for recipe
 > ~~~
 > {: .output}
@@ -609,7 +606,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Try it for yourself:
 >
 >    ~~~
->    $ touch cakes/brownie cakes/lemon_drizzle
+>    $ touch cakes/brownie_cakes/lemon_drizzle
 >    $ git status
 >    $ git add cakes
 >    $ git status
@@ -635,11 +632,11 @@ repository (`git commit`):
 > ## Choosing a Commit Message
 >
 > Which of the following commit messages would be most appropriate for the
-> last commit made to `guacamole.md`?
+> last commit made to `peasoup.md`?
 >
 > 1. "Changes"
-> 2. "Changed lemon for lime"
-> 3. "Guacamole modified to the traditional recipe"
+> 2. "Changed onions for spring onions"
+> 3. "peasoup modified to the traditional recipe"
 >
 > > ## Solution
 > > Answer 1 is not descriptive enough, and the purpose of the commit is unclear;
@@ -686,7 +683,7 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `guacamole.md` noting the rough price of the
+> 1. Add some text to `peasoup.md` noting the rough price of the
 > ingredients.
 > 2. Create a new file `groceries.md` with a list of products and
 > their prices for different markets.
@@ -695,17 +692,17 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > First we make our changes to the `guacamole.md` and `groceries.md` files:
+> > First we make our changes to the `peasoup.md` and `groceries.md` files:
 > > ~~~
-> > $ nano guacamole.md
-> > $ cat guacamole.md
+> > $ nano peasoup.md
+> > $ cat peasoup.md
 > > ~~~
 > > {: .language-bash}
 > > ~~~
 > > # Ingredients
-> > - avocado (1.35)
-> > - lime (0.64)
-> > - salt (2)
+> > - peas (1.35)
+> > - spring onions (0.64)
+> > - potato (2)
 > > ~~~
 > > {: .output}
 > > ~~~
@@ -715,20 +712,20 @@ repository (`git commit`):
 > > {: .language-bash}
 > > ~~~
 > > # Market A
-> > - avocado: 1.35 per unit.
-> > - lime: 0.64 per unit
-> > - salt: 2 per kg
+> > - peas: 1.35 per unit.
+> > - spring onions: 0.64 per unit
+> > - potato: 2 per kg
 > > ~~~
 > > {: .output}
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add guacamole.md groceries.md
+> > $ git add peasoup.md groceries.md
 > > ~~~
 > > {: .language-bash}
 > > Or with multiple commands:
 > > ~~~
-> > $ git add guacamole.md
+> > $ git add peasoup.md
 > > $ git add groceries.md
 > > ~~~
 > > {: .language-bash}

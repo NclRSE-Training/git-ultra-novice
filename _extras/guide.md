@@ -152,12 +152,7 @@ working in teams or not, because it is
 *   This is a good moment to show a log within a Git GUI. If you skip it
     because you're short on time, show it once in GitHub.
 
-## [Ignoring Things]({{ page.root }}{% link _episodes/06-ignore.md %})
-
-Just remember that you can use wildcards and regular expressions to ignore a
-particular set of files in `.gitignore`.
-
-## [Remotes in GitHub]({{ page.root }}{% link _episodes/09-github.md %})
+## [Remotes in GitHub]({{ page.root }}{% link _episodes/05-github.md %})
 
 *   Make it clear that Git and GitHub are not the same thing: Git is an open
     source version control tool, GitHub is a company that hosts Git
@@ -248,7 +243,12 @@ particular set of files in `.gitignore`.
 *   Learners may have slightly different output from `git push` and `git pull`
     depending on the version of git, and if upstream (`-u`) is used.
 
-## [Conflicts]({{ page.root }}{% link _episodes/08-conflict.md %})
+## [Ignoring Things]({{ page.root }}{% link _episodes/07-ignore.md %})
+
+Just remember that you can use wildcards and regular expressions to ignore a
+particular set of files in `.gitignore`.
+
+## [Conflicts]({{ page.root }}{% link _episodes/09-conflict.md %})
 
 *   Expect the learners to make mistakes. Expect *yourself* to make mistakes.
     This happens because it is late in the lesson and everyone is tired.
