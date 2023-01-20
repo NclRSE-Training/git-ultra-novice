@@ -74,7 +74,7 @@ $ git status
 ~~~
 {: .language-bash}
 ~~~
-On branch master
+On branch main
 
 Initial commit
 

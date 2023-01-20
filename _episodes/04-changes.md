@@ -56,7 +56,7 @@ peasoup.md
 {: .output}
 
 
-`peasoup.md` contains a single line, which we can see by running:
+`peasoup.md` contains two lines, which we can see by running:
 
 ~~~
 $ cat peasoup.md
@@ -78,14 +78,14 @@ $ git status
 {: .language-bash}
 
 ~~~
-On branch master
+On branch main
 
-Initial commit
+No commits yet
 
 Untracked files:
    (use "git add <file>..." to include in what will be committed)
+         peasoup.md
 
-	peasoup.md
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 {: .output}
@@ -107,14 +107,13 @@ $ git status
 {: .language-bash}
 
 ~~~
-On branch master
+On branch main
 
-Initial commit
+No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-
-	new file:   peasoup.md
+        new file:   peasoup.md
 
 ~~~
 {: .output}
@@ -130,7 +129,7 @@ $ git commit -m "Create a template for recipe"
 {: .language-bash}
 
 ~~~
-[master (root-commit) f22b25e] Create a template for recipe
+[main (root-commit) f22b25e] Create a template for recipe
  1 file changed, 1 insertion(+)
  create mode 100644 peasoup.md
 ~~~
@@ -159,8 +158,8 @@ $ git status
 {: .language-bash}
 
 ~~~
-On branch master
-nothing to commit, working directory clean
+On branch main
+nothing to commit, working tree clean
 ~~~
 {: .output}
 
@@ -174,7 +173,7 @@ $ git log
 {: .language-bash}
 
 ~~~
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+commit f22b25e3233b4645dabd0d81e651fe074bd8e73b (HEAD -> main)
 Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
@@ -228,12 +227,11 @@ $ git status
 {: .language-bash}
 
 ~~~
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   peasoup.md
+        modified:   peasoup.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -294,19 +292,17 @@ $ git status
 {: .language-bash}
 
 ~~~
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   peasoup.md
+    	modified:   peasoup.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 {: .output}
 
-Whoops:
-Git won't commit because we didn't use `git add` first.
+Whoops -  Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ~~~
@@ -316,7 +312,7 @@ $ git commit -m "Add basic ingredients for pea soup"
 {: .language-bash}
 
 ~~~
-[master 34961b1] Add basic ingredients for pea soup
+[main 34961b1] Add basic ingredients for pea soup
  1 file changed, 3 insertions(+)
 ~~~
 {: .output}
@@ -451,7 +447,7 @@ $ git commit -m "Modify peasoup to use different onions"
 {: .language-bash}
 
 ~~~
-[master 005937f] Modify peasoup to use different onions
+[main 005937f] Modify peasoup to use different onions
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -464,7 +460,7 @@ $ git status
 {: .language-bash}
 
 ~~~
-On branch master
+On branch main
 nothing to commit, working directory clean
 ~~~
 {: .output}
@@ -477,7 +473,7 @@ $ git log
 {: .language-bash}
 
 ~~~
-commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
+commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -> main)
 Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
@@ -533,7 +529,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > {: .language-bash}
 >
 > ~~~
-> commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
+> commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -> main)
 > Author: Alfredo Linguini <a.linguini@ratatouille.fr>
 > Date:   Thu Aug 22 10:14:07 2013 -0400
 >
@@ -549,7 +545,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> 005937f Modify peasoup to use different onions
+> 005937f (HEAD -> main) Modify peasoup to use different onions
 > 34961b1 Add basic ingredients for pea soup
 > f22b25e Create a template for recipe
 > ~~~
@@ -558,7 +554,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > You can also combine the `--oneline` option with others. One useful
 > combination adds `--graph` to display the commit history as a text-based
 > graph and to indicate which commits are associated with the
-> current `HEAD`, the current branch `master`, or
+> current `HEAD`, the current branch `main`, or
 > [other Git references][git-references]:
 >
 > ~~~
@@ -566,7 +562,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> * 005937f Modify peasoup to use different onions  (HEAD, master)
+> * 005937f (HEAD -> main) Modify peasoup to use different onions
 > * 34961b1 Add basic ingredients for pea soup
 > * f22b25e Create a template for recipe
 > ~~~
@@ -735,8 +731,7 @@ repository (`git commit`):
 > > ~~~
 > > {: .language-bash}
 > > ~~~
-> > [master cc127c2]
-> >  Write prices for ingredients and their source
+> > [main cc127c2] Write prices for ingredients and their source
 > >  2 files changed, 7 insertions(+)
 > >  create mode 100644 groceries.md
 > > ~~~

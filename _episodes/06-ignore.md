@@ -30,14 +30,13 @@ $ git status
 {: .language-bash}
 
 ~~~
-On branch master
+On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-
-	a.png
-	b.png
-	c.png
-	receipts/
+        a.png
+        b.png
+        c.png
+	      receipts/
 
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
@@ -76,11 +75,10 @@ $ git status
 {: .language-bash}
 
 ~~~
-On branch master
+On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-
-	.gitignore
+      	.gitignore
 
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
