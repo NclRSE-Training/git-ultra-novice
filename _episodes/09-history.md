@@ -21,14 +21,14 @@ identifiers.  You can refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
 We've been adding small changes at a time to our recipe files, so it's easy to track our
-progress by looking at the `HEAD`s.  Let's create a new recipe, `borscht.md` in the same way
+progress by looking at the `HEAD`s.  Let's create a new recipe, `mushroomsoup.md` in the same way
 we created `peasoup.md`.
 
 First, create the file and add some headings, committing the change afterwards.
 
 ~~~
-$ nano borscht.md
-$ cat borscht.md
+$ nano mushroomsoup.md
+$ cat mushroomsoup.md
 ~~~
 {: .language-bash}
 
@@ -38,7 +38,7 @@ $ cat borscht.md
 ~~~
 
 ~~~
-$ git add borscht.md
+$ git add mushroomsoup.md
 $ git commit -m "Create a template for recipe"
 ~~~
 {: .language-bash}
@@ -46,83 +46,81 @@ $ git commit -m "Create a template for recipe"
 Next, add some ingredients to the recipe. Commit the change to the repository.
 
 ~~~
-$ nano borscht.md
-$ cat borscht.md
+$ nano mushroomsoup.md
+$ cat mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
 # Ingredients
-- beetroot
-- carrots
 - onions
+- garlic
+- chestnut mushrooms
 # Instructions
 ~~~
 
 ~~~
-$ git add borscht.md
-$ git commit -m "Add basic ingredients for borscht"
+$ git add mushroomsoup.md
+$ git commit -m "Add basic ingredients for mushroom soup"
 ~~~
 {: .language-bash}
 
-Forgot to add an ingredient - we can do that next.
+We decide to change one of the ingredients:
 
 ~~~
-$ nano borscht.md
-$ cat borscht.md
+$ nano mushroomsoup.md
+$ cat mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
 # Ingredients
-- beetroot
-- carrots
 - onions
-- cabbage
+- garlic
+- button mushrooms
 # Instructions
 ~~~
 {: .output}
 
 ~~~
-$ git add borscht.md
-$ git commit -m "Added cabbage to the recipe"
+$ git add mushroomsoup.md
+$ git commit -m "Change mushroom type"
 ~~~
 {: .language-bash}
 
 Now let's make a change that turns out to be something of a mistake.
 
 ~~~
-$ nano borscht.md
-$ cat borscht.md
+$ nano mushroomsoup.md
+$ cat mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
 # Ingredients
-- beetroot
-- carrots
 - onions
-- cabbage
+- garlic
+- button mushrooms
 # Instructions
 An ill-considered change
 ~~~
 {: .output}
 
-Now, let's see what we get.
+Now, let's see what the differences are between our current version and the HEAD of the repository.
 
 ~~~
-$ git diff HEAD borscht.md
+$ git diff HEAD mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/borscht.md b/borscht.md
+diff --git a/mushroomsoup.md b/mushroomsoup.md
 index b36abfd..0848c8d 100644
---- a/borscht.md
-+++ b/borscht.md
-@@ -4,3 +4,4 @@
- - onions
- - cabbage
+--- a/mushroomsoup.md
++++ b/mushroomsoup.md
+@@ -3,3 +3,4 @@
+ - garlic
+ - button mushrooms
  # Instructions
 +An ill-considered change
 ~~~
@@ -136,7 +134,7 @@ when you can refer to previous commits. We do that by adding `~1`
 before `HEAD`.
 
 ~~~
-$ git diff HEAD~1 borscht.md
+$ git diff HEAD~1 mushroomsoup.md
 ~~~
 {: .language-bash}
 
@@ -144,24 +142,22 @@ If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
 ~~~
-$ git diff HEAD~2 borscht.md
+$ git diff HEAD~2 mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/borscht.md b/borscht.md
+diff --git a/mushroomsoup.md b/mushroomsoup.md
 index df0654a..b36abfd 100644
---- a/borscht.md
-+++ b/borscht.md
-@@ -1,2 +1,7 @@
+--- a/mushroomsoup.md
++++ b/mushroomsoup.md
+@@ -1,2 +1,6 @@
  # Ingredients
-+- beetroot
-+- carrots
 +- onions
-+- cabbage
++- garlic
++- button mushrooms
  # Instructions
 +An ill-considered change
-
 ~~~
 {: .output}
 
@@ -170,7 +166,7 @@ well as the commit message, rather than the _differences_ between a commit and o
 working directory that we see by using `git diff`.
 
 ~~~
-$ git show HEAD~2 borscht.md
+$ git show HEAD~2 mushroomsoup.md
 ~~~
 {: .language-bash}
 
@@ -181,11 +177,11 @@ Date:   Thu Aug 22 10:07:21 2013 -0400
 
     Create a template for recipe
 
-diff --git a/peasoup.md b/peasoup.md
+diff --git a/mushroomsoup.md b/mushroomsoup.md
 new file mode 100644
 index 0000000..df0654a
 --- /dev/null
-+++ b/peasoup.md
++++ b/mushroomsoup.md
 @@ -0,0 +1,2 @@
 +# Ingredients
 +# Instructions
@@ -212,21 +208,20 @@ Our first commit was given the ID
 so let's try this (your ID will be different):
 
 ~~~
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b borscht.md
+$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/borscht.md b/borscht.md
+diff --git a/mushroomsoup.md b/mushroomsoup.md
 index df0654a..93a3e13 100644
---- a/borscht.md
-+++ b/borscht.md
-@@ -1,2 +1,7 @@
+--- a/mushroomsoup.md
++++ b/mushroomsoup.md
+@@ -1,2 +1,6 @@
  # Ingredients
-+- beetroot
-+- carrots
 +- onions
-+- cabbage
++- garlic
++- button mushrooms
  # Instructions
 +An ill-considered change
 ~~~
@@ -236,21 +231,20 @@ That's the right answer, but because typing out random 40-character strings is a
 Git lets us use just the first few characters (typically seven for normal size projects):
 
 ~~~
-$ git diff f22b25e peasoup.md
+$ git diff f22b25e mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/borscht.md b/borscht.md
+diff --git a/mushroomsoup.md b/mushroomsoup.md
 index df0654a..93a3e13 100644
---- a/borscht.md
-+++ b/borscht.md
-@@ -1,2 +1,7 @@
+--- a/mushroomsoup.md
++++ b/mushroomsoup.md
+@@ -1,2 +1,6 @@
  # Ingredients
-+- beetroot
-+- carrots
 +- onions
-+- cabbage
++- garlic
++- button mushrooms
  # Instructions
 +An ill-considered change
 ~~~
@@ -259,7 +253,7 @@ index df0654a..93a3e13 100644
 All right! So we can save changes to files and see what we've changed.
 Now, can we restore older versions?
 Let's suppose we change our mind about the last update to
-`borscht.md` (the "ill-considered change").
+`mushroomsoup.md` (the "ill-considered change").
 
 `git status` now tells us that the file has been changed,
 but those changes haven't been staged (we haven't yet used the `git commit`
@@ -275,7 +269,7 @@ On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
-    modified:   borscht.md
+    modified:   mushroomsoup.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -284,17 +278,16 @@ no changes added to commit (use "git add" and/or "git commit -a")
 We can put things back the way they were by using `git checkout`:
 
 ~~~
-$ git checkout HEAD borscht.md
-$ cat borscht.md
+$ git checkout HEAD mushroomsoup.md
+$ cat mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
 # Ingredients
-- beetroot
-- carrots
 - onions
-- cabbage
+- garlic
+- chestnut mushrooms
 # Instructions
 ~~~
 {: .output}
@@ -308,12 +301,12 @@ If we want to go back even further,
 we can use a commit identifier instead:
 
 ~~~
-$ git checkout f22b25e borscht.md
+$ git checkout f22b25e mushroomsoup.md
 ~~~
 {: .language-bash}
 
 ~~~
-$ cat borscht.md
+$ cat mushroomsoup.md
 ~~~
 {: .language-bash}
 
@@ -332,7 +325,7 @@ $ git status
 On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
-    modified:   borscht.md
+    modified:   mushroomsoup.md
 
 ~~~
 {: .output}
@@ -342,7 +335,7 @@ Again, we can put things back the way they were
 by using `git checkout`:
 
 ~~~
-$ git checkout HEAD borscht.md
+$ git checkout HEAD mushroomsoup.md
 ~~~
 {: .language-bash}
 
@@ -351,14 +344,14 @@ $ git checkout HEAD borscht.md
 > Above we used
 >
 > ~~~
-> $ git checkout f22b25e borscht.md
+> $ git checkout f22b25e mushroomsoup.md
 > ~~~
 > {: .language-bash}
 >
-> to revert `borscht.md` to its state after the commit `f22b25e`. But be careful!
+> to revert `mushroomsoup.md` to its state after the commit `f22b25e`. But be careful!
 > The command `checkout` has other important functionalities and Git will misunderstand
 > your intentions if you are not accurate with your typing.
-> If you forget `borscht.md` in the previous command.
+> If you forget `mushroomsoup.md` in the previous command.
 >
 > ~~~
 > $ git checkout f22b25e
@@ -550,10 +543,10 @@ moving backward and forward in time becomes much easier.
 
 > ## Checking Understanding of `git diff`
 >
-> Consider this command: `git diff HEAD~9 borscht.md`. What do you predict this command
+> Consider this command: `git diff HEAD~9 mushroomsoup.md`. What do you predict this command
 > will do if you execute it? What happens when you do execute it? Why?
 >
-> Try another command, `git diff [ID] borscht.md`, where [ID] is replaced with
+> Try another command, `git diff [ID] mushroomsoup.md`, where [ID] is replaced with
 > the unique identifier for your most recent commit. What do you think will happen,
 > and what does happen?
 {: .challenge}
@@ -562,7 +555,7 @@ moving backward and forward in time becomes much easier.
 >
 > `git checkout` can be used to restore a previous commit when unstaged changes have
 > been made, but will it also work for changes that have been staged but not committed?
-> Make a change to `borscht.md`, add that change, and use `git checkout` to see if
+> Make a change to `mushroomsoup.md`, add that change, and use `git checkout` to see if
 > you can remove your change.
 {: .challenge}
 
@@ -570,21 +563,20 @@ moving backward and forward in time becomes much easier.
 >
 > Exploring history is an important part of Git, and often it is a challenge to find
 > the right commit ID, especially if the commit is from several months ago.
->
 > Imagine the `recipes` project has more than 50 files.
-> You would like to find a commit that modifies some specific text in `borscht.md`.
-> When you type `git log`, a very long list appeared.
+> You would like to find a commit that modifies some specific text in `mushroomsoup.md`.
+> When you type `git log`, a very long list appears.
 > How can you narrow down the search?
 >
 > Recall that the `git diff` command allows us to explore one specific file,
-> e.g., `git diff borscht.md`. We can apply a similar idea here.
+> e.g., `git diff mushroomsoup.md`. We can apply a similar idea here.
 >
 > ~~~
-> $ git log borscht.md
+> $ git log mushroomsoup.md
 > ~~~
 > {: .language-bash}
 >
-> Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
+> Imagine that some commit messages are very ambiguous, e.g., `update files`.
 > How can you search through these files?
 >
 > Both `git diff` and `git log` are very useful and they summarize a different part of the history 
@@ -592,7 +584,7 @@ moving backward and forward in time becomes much easier.
 > Is it possible to combine both? Let's try the following:
 >
 > ~~~
-> $ git log --patch borscht.md
+> $ git log --patch mushroomsoup.md
 > ~~~
 > {: .language-bash}
 >
@@ -602,7 +594,7 @@ moving backward and forward in time becomes much easier.
 > Question: What does the following command do?
 >
 > ~~~
-> $ git log --patch HEAD~9 *.md
+> $ git log --patch HEAD~3 *.md
 > ~~~
 > {: .language-bash}
 {: .challenge}
