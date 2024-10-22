@@ -71,61 +71,8 @@ Now that we have two repositories, we need a diagram like this:
 Note that our local repository still contains our earlier work on `peasoup.md`, but the
 remote repository on GitHub appears empty as it doesn't contain any files yet.
 
-## 2. Connect local to remote repository
-Now we connect the two repositories.  We do this by making the
-GitHub repository a [remote]({{ page.root}}{% link reference.md %}#remote) for the local repository.
-The home page of the repository on GitHub includes the URL string we need to
-identify it:
 
-![Where to Find Repository URL on GitHub](../fig/github-find-repo-string.png)
-
-Click on the 'SSH' link to change the [protocol]({{ page.root }}{% link reference.md %}#protocol) from HTTPS to SSH.
-
-> ## HTTPS vs. SSH
->
-> We use SSH because, while it requires some additional configuration, it is a 
-> security protocol widely used by many applications. GitHub does not permit HTTPS access
-> to repositories using your account login and password in any event, instead requiring the
-> creation of a personal access token (PAT) which also needs additional configuration.
-> The steps below describe SSH at a minimum level for GitHub. A supplemental episode
-> to this lesson discusses advanced setup and concepts of SSH and key pairs, and other
-> material supplemental to Git-related SSH. 
-{: .callout}
-
-![Changing the Repository URL on GitHub](../fig/github-change-repo-string.png)
-
-Copy that URL from the browser, go into the local `recipes` repository, and run
-this command:
-
-~~~
-$ git remote add origin https://github.com/alflin/recipes.git
-~~~
-{: .language-bash}
-
-Make sure to use the URL for your repository rather than Alfredo's: the only
-difference should be your username instead of `alflin`.
-
-`origin` is a local name used to refer to the remote repository. It could be called
-anything, but `origin` is a convention that is often used by default in git
-and GitHub, so it's helpful to stick with this unless there's a reason not to.
-
-We can check that the command has worked by running `git remote -v`:
-
-~~~
-$ git remote -v
-~~~
-{: .language-bash}
-
-~~~
-origin   https://github.com/alflin/recipes.git (push)
-origin   https://github.com/alflin/recipes.git (fetch)
-~~~
-{: .output}
-
-We'll discuss remotes in more detail in the next episode, while
-talking about how they might be used for collaboration.
-
-## 3. SSH Background and Setup
+## 2. SSH Background and Setup
 Before Alfredo can connect to a remote repository, he needs to set up a way for his computer to authenticate with GitHub so it knows it’s him trying to connect to his remote repository. 
 
 We are going to set up the method that is commonly used by many different services to authenticate access on the command line.  This method is called Secure Shell Protocol (SSH).  SSH is a cryptographic network protocol that allows secure communication between computers using an otherwise insecure network.  
@@ -144,8 +91,8 @@ The first thing we are going to do is check if this has already been done on the
 
 > ## Keeping your keys secure
 > You shouldn't really forget about your SSH keys, since they keep your account secure. It’s good 
->  practice to audit your secure shell keys every so often. Especially if you are using multiple 
->  computers to access your account.
+> practice to audit your secure shell keys every so often, especially if you are using multiple 
+> computers to access your account.
 {: .callout}
 
 We will run the list command to check what key pairs already exist on your computer.
@@ -273,12 +220,21 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI
 ~~~
 {: .output}
 
-Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the 
-settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now, 
-you can add the title (Alfredo uses the title "Alfredo's Lab Laptop" so he can remember where the original key pair
-files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
+Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now, you can add the title (Alfredo uses the title "Alfredo's Lab Laptop" so he can remember where the original key pair files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
 
-Now that we’ve set that up, let’s check our authentication again from the command line. 
+> ## Losing your keys
+> If you lose the SSH key that you use to connect to Github, don't despair. You might have deleted your key
+> either accidentally or deliberately; perhaps you have acquired a new computer and recycled the old one before
+> transferring the key; maybe your computer becomes damaged and unreadable; or perhaps you suspect your private key
+> is compromised for some reason. In such an event you can follow the above key creation process again to generate
+> a new key pair, retaining the private key on your local computer and adding the public key to Github again. You
+> should delete any old public keys that are still on Github in this case. Some developers have a different set of keys
+> for each computer they work one, whicl some prefer to have one set of keys that are duplicated on each machine.
+> Whichever route you take it's easy to generate and deploy new pairs for your purposes.
+{: .callout}
+
+
+Now that we’ve set up our key pair, let’s check our authentication again from the command line. 
 ~~~
 $ ssh -T git@github.com
 ~~~
@@ -290,6 +246,60 @@ Hi Alfredo! You've successfully authenticated, but GitHub does not provide shell
 {: .output}
 
 Good! This output confirms that the SSH key works as intended. We are now ready to push our work to the remote repository.
+
+
+
+## 3. Connect local to remote repository
+Now we connect the two repositories.  We do this by making the GitHub repository a [remote]({{ page.root}}{% link reference.md %}#remote) for the local repository. The home page of the repository on GitHub includes the URL string we need to
+identify it. The default is probably HTTPS and will look something like this:
+
+![Changing the Repository URL on GitHub](../fig/github-change-repo-string.png)
+
+We need to use SSH for authentication, so click on the 'SSH' link to change the [protocol]({{ page.root }}{% link reference.md %}#protocol) from HTTPS to SSH.
+
+![Where to Find Repository URL on GitHub](../fig/github-find-repo-string.png)
+
+
+> ## HTTPS vs. SSH
+>
+> We use SSH because, while it requires some additional configuration, it is a 
+> security protocol widely used by many applications. GitHub does not permit HTTPS access
+> to repositories using your account login and password in any event. It is possible to connect using
+> a special type of password called a personal access token (PAT) which also needs additional configuration
+> within Github and this is not pursued in this Carpentries lesson. This episode describes SSH at a
+> minimum level for using GitHub. A supplemental episode
+> to this lesson discusses advanced setup and concepts of SSH and key pairs, and other
+> material supplemental to Git-related SSH. 
+{: .callout}
+
+
+Now that we've created our key pair, with the private key on our local computer and Github holding the public key, we can link out local repository to Github. Copy the SSH URL from the browser, go into the local `recipes` repository, and run this command:
+
+~~~
+$ git remote add origin git@github.com/alflin/recipes.git
+~~~
+{: .language-bash}
+
+Make sure to use the URL for your repository rather than Alfredo's: the only
+difference should be your username instead of `alflin`.
+
+`origin` is a local name used to refer to the remote repository. It could be called anything, but `origin` is a convention that is often used by default in git and GitHub, so it's helpful to stick with this unless there's a reason not to.
+
+We can check that the command has worked by running `git remote -v`:
+
+~~~
+$ git remote -v
+~~~
+{: .language-bash}
+
+~~~
+origin   git@github.com/alflin/recipes.git (push)
+origin   git@github.com/alflin/recipes.git (fetch)
+~~~
+{: .output}
+
+We'll discuss remotes in more detail in a later episode, when we discuss how they might be used for collaboration with other developers.
+
 
 ## 4. Push local changes to a remote
 
